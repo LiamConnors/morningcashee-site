@@ -1,0 +1,121 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<article class="cv">
+				<slot />
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style is:global>
+	body > main {
+		width: 640px;
+		max-width: calc(100% - 2em);
+		margin: 0 auto;
+		padding: 2rem 1rem 3rem;
+	}
+	.cv {
+		font-size: 0.95rem;
+		line-height: 1.5;
+		color: rgb(var(--gray-dark));
+	}
+	.cv h1 {
+		margin: 0 0 1.25rem;
+		font-size: 2rem;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+	}
+	.cv h2 {
+		margin: 1.5rem 0 0.5rem;
+		font-size: 1.4rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: rgb(var(--gray-dark));
+		border-bottom: 1px solid rgba(var(--gray-light), 0.9);
+		padding-bottom: 0.25rem;
+	}
+	.cv hr {
+		border: none;
+		border-top: 1px solid rgba(var(--gray-light), 0.9);
+		margin: 1.25rem 0;
+	}
+	.cv p {
+		margin: 0 0 0.6rem;
+	}
+	.cv .intro {
+		margin-bottom: 1.4rem;
+		font-size: 0.92rem;
+		line-height: 1.55;
+	}
+	.cv .role-line {
+		margin: 0 0 0.5rem;
+		font-size: 0.98rem;
+	}
+	.cv .role {
+		font-weight: 700;
+		color: rgb(var(--gray-dark));
+		font-size: 1.2rem;
+	}
+	.cv .meta {
+		color: rgb(var(--gray-dark));
+		font-size: 0.92rem;
+		margin-bottom: 0.5rem;
+		text-decoration: underline;
+		text-decoration-color: rgb(var(--gray));
+		text-underline-offset: 3px;
+	}
+	.cv .role-summary {
+		margin-bottom: 0.5rem;
+		line-height: 1.55;
+	}
+	.cv .cat {
+		margin: 0.75rem 0 0.15rem;
+		font-weight: 700;
+		font-size: 0.88rem;
+		color: rgb(var(--gray-dark));
+	}
+	.cv ul {
+		margin: 0 0 0.5rem;
+		padding-left: 1rem;
+		list-style: none;
+	}
+	.cv li {
+		position: relative;
+		padding-left: 0.9rem;
+		margin-top: 0.15rem;
+	}
+	.cv li::before {
+		content: '–';
+		position: absolute;
+		left: 0;
+		color: rgb(var(--gray-dark));
+	}
+	@media (max-width: 720px) {
+		main {
+			padding: 1.5rem 1rem 2rem;
+		}
+		.cv {
+			font-size: 0.9rem;
+		}
+	}
+</style>
