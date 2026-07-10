@@ -8,11 +8,10 @@ import { defineConfig, fontProviders } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://example.com',
-	integrations: [mdx(), icon(), sitemap()],
 	redirects: {
-		'/projects': '/',
-		'/blog': '/',
+		'/posts': '/',
 	},
+	integrations: [mdx(), icon(), sitemap()],
 	fonts: [
 		{
 			provider: fontProviders.local(),
